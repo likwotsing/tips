@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table布局的说明</title>
+</head>
+<body>
+  <h2>table标签（display: table;）</h2>
+  <pre>
+    1、table可设置宽高、margin、border、padding等，属性的单位可以使用px，百分比
+    2、table的宽度默认由内容的宽度撑开，如果table设置了宽度，宽度默认被内部的td均分，如果给某个td设置了宽度，那么剩余宽度会被其它的td均分（类似flex）
+    3、给table设置的高度起到的作用只是min-height的作用，当内容的高度高度设置的高度时，table的高度会被撑高
+  </pre>
+  <h2>tr标签(diaplay: table-row;)</h2>
+  <pre>
+    1、给tr设置高度只起到min-height的作用，默认会均分table的高度
+    2、tr内部的td默认高度会继承tr的高度，若给任一td设置了高度，其他td的高度也同样变高（适合多列登高布局）
+    3、tr设置宽度、margin都不起作用
+  </pre>
+  <h2>td标签(display: table-cell;)</h2>
+  <pre>
+    1、td默认继承tr的高度，且均分table的宽度
+    2、如果td设置vertical-align: middle;td里面的元素（除float，absolute）所有的块级、非块级元素都会相对于td垂直居中
+    3、如果td设置text-align: center; td元素里面所有非block元素（除float、absolute）都会相对于td水平居中，虽然block元素不居中，但里面的文字或inline元素会水平居中
+  </pre>
+</body>
+</html>

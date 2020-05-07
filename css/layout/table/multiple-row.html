@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多行定高/不定高/定宽/不定宽水平垂直居中</title>
+  <style>
+    * {
+      /* word-break: break-all; */
+      /* word-wrap: break-word; */
+      /* text-align: justify; */
+    }
+    .box {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      width: 400px;
+      height: 400px;
+      border: 1px solid #409EFF;
+    }
+    .p1 {
+      display: inline-block;
+      width: 100px;
+      /* height: 200px; */
+      background-color: #6AC5AC;
+    }
+    .p2 {
+      background-color: #D66666;
+    }
+
+  </style>
+</head>
+<body>
+  <h2>多行定高/不定高/定宽/不定宽水平垂直居中</h2>
+  <pre>
+    1、设置宽度width后，需设置display: inline-block;
+  </pre>
+  <div class="box">
+    <p class="p1">
+      阿斯蒂芬阿斯蒂芬阿斯蒂芬阿斯蒂芬阿斯蒂芬阿斯蒂芬阿斯蒂芬
+    </p>
+    <p class="p2">
+      andy
+      <!-- <img src="https://via.placeholder.com/150" alt=""> -->
+    </p>
+  </div>
+</body>
+</html>
