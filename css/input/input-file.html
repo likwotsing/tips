@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>input上传文件按钮美化</title>
+  <style>
+    .dv1 {
+      position: relative;
+      display: inline-block;
+      background: #D0EEFF;
+      border: 1px solid #99D3F5;
+      border-radius: 4px;
+      padding: 4px 12px;
+      overflow: hidden;
+      color: #1E88C7;
+      text-decoration: none;
+      text-indent: 0;
+      line-height: 20px;
+    }
+    .dv1:hover {
+      background: #AADFFD;
+      border-color: #78C3F3;
+      color: #004974;
+      text-decoration: none;
+    }
+    .dv1 input {
+      position: absolute;
+      font-size: 100px;
+      right: 0;
+      top: 0;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <pre>
+    1、input file 上传按钮的美化思路：先把之前的按钮透明度opacity设置为0，外层用div包括，实现美化
+    2、美化后，把默认显示的文件名也给隐藏掉了，需要手动显示
+  </pre>
+  <div class="dv1">
+    <input type="file" >选择文件
+  </div>
+  <div class="error-tip"></div>
+  <div class="show-filename"></div>
+  <script src="./jquery-1.9.0.js"></script>
+  <script>
+    $('.dv1').on('change', 'input[type="file"]', function() {
+      var filePath = $(this).val()
+      if (filePath.indexOf('jpg') !== -1 || filePath.indexOf('png') !== -1) {
+        $('.error-tip').html('').hide()
+        var arr = filePath.split('\\')
+        var fileName = arr[arr.length - 1]
+        $('.show-filename').html(fileName)
+      } else {
+        $('.show-filename').html('')
+        $('.error-tip').html('您未上传文件，或您上传文件类型有误！').show()
+        // return false
+      }
+    })
+  </script>
+</body>
+</html>
