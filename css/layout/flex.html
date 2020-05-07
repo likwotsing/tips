@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex布局</title>
+  <style>
+    .wrap {
+      display: flex;
+    }
+    .left {
+      width: 100px;
+      background-color: #6AC5AC;
+    }
+    .center {
+      flex: 1;
+      background-color: #D66666;
+    }
+    .right {
+      width: 200px;
+      background-color: #FCC777;
+    }
+  </style>
+</head>
+<body>
+  <h2>flex布局：中间自适应，两边固定</h2>
+  <pre>
+    left/center/right，哪个自适应，哪个就设置flex:1,其他2个设置width
+  </pre>
+  <div class="wrap">
+    <div class="left">left</div>
+    <div class="center">center<img src="http://img.zcool.cn/community/01f9ea56e282836ac72531cbe0233b.jpg@2o.jpg" alt="" width="100" heigth="100"></div>
+    <div class="right">right</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双飞翼布局</title>
+  <style>
+    .center {
+      float: left;
+      width: 100%;
+      background-color: #FCC777;
+    }
+    .main {
+      margin-top: 0;
+      margin-right: 100px;
+      margin-bottom: 0;
+      margin-left: 250px;
+      background-color: #D66666;
+    }
+    .left {
+      float: left;
+      margin-left: -100%;
+      width: 250px;
+      background-color: #6AC5AC;
+    }
+    .right {
+      float: left;
+      width: 100px;
+      margin-left: -100px;
+      background-color: #409EFF;
+    }
+  </style>
+</head>
+<body>
+  <h2>双飞翼布局</h2>
+  <pre>
+    1、双飞翼布局和圣杯布局很相似，都需要设置float: left;
+    2、双飞翼布局，中间元素需要额外添加一个包裹元素
+    3、中间元素使用的margin来定位，左右2侧元素填充的是其margin
+  </pre>
+  <div class="wrap">
+    <div class="center">
+      <div class="main">
+        center-main<img src="http://img.zcool.cn/community/01f9ea56e282836ac72531cbe0233b.jpg@2o.jpg" alt="" width="100" heigth="100">
+      </div>
+    </div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+</body>
+</html>

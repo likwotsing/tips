@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>绝对定位布局</title>
+  <style>
+    .clearfix:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      visibility: hidden;
+      clear: both;
+    }
+    .wrap {
+      position: relative;
+    }
+    .left {
+      position: absolute;
+      left: 0;
+      width: 200px;
+      background-color: #6AC5AC;
+    }
+    .right {
+      position: absolute;
+      right: 0;
+      width: 200px;
+      background-color: #FCC777;
+    }
+    .center {
+      /* position: absolute;
+      left: 200px;
+      right: 200px; */
+      margin-left: 200px;
+      margin-right: 200px;
+      background-color: #D66666;
+    }
+
+  </style>
+</head>
+<body>
+  <h2>两边宽度固定，中间自适应</h2>
+  <pre>
+    绝对定位的原理是：将左右两边使用absolute定位，因为绝对定位使元素脱离文档流，后面的center会自然流动到他们上面，然后使用margin属性，留出左右元素的宽度
+    1、center需要放到最后
+    2、如果center不放到最后，那center也需要设置absolute，设置left和right值
+  </pre>
+  <div class="wrap clearfix">
+    <div class="left">left</div>
+    <div class="right">right</div>
+    <div class="center">center</div>
+  </div>
+</body>
+</html>

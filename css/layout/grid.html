@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>grid布局</title>
+  <style>
+    .wrap {
+      display: grid;
+      grid-template-columns: 150px auto 300px;
+      /* grid-template-rows: 150px; */
+    }
+    .left {
+      background-color: #6AC5AC;
+    }
+    .center {
+      background-color: #FCC777;
+    }
+    .right {
+      background-color: #D66666;
+    }
+  </style>
+</head>
+<body>
+  <h2>grid布局</h2>
+  <pre>
+    设置grid-template-columns的值，哪个自适应，就设置为auto
+  </pre>
+  <div class="wrap">
+    <div class="left">left</div>
+    <div class="center">center<img src="http://img.zcool.cn/community/01f9ea56e282836ac72531cbe0233b.jpg@2o.jpg" alt="" width="100" heigth="100"></div>
+    <div class="right">right</div>
+  </div>
+</body>
+</html>

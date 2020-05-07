@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圣杯布局</title>
+  <style>
+    .wrap {
+      padding-top: 0;
+      padding-right: 150px;
+      padding-bottom: 0;
+      padding-left: 200px;
+    }
+    .left {
+      position: relative;
+      left: -200px;
+      float: left;
+      width: 200px;
+      margin-left: -100%;
+      background-color: #6AC5AC;
+    }
+    .right {
+      position: relative;
+      width: 150px;
+      float: left;
+      margin-left: -150px; /* 浮动到和center同一行*/
+      right: -150px; /* 占据右侧的padding */
+      background-color: #D66666;
+    }
+    .center {
+      float: left;
+      width: 100%;
+      background-color: #FCC777;
+    }
+  </style>
+</head>
+<body>
+  <h2>圣杯布局</h2>
+  <pre>
+    圣杯布局，就是父元素设置左右padding，center占据主要内容部分，left和right元素占据左右padding
+    1、3个元素都需要设置float:left;
+    2、center元素需要放到最前面
+    3、中间的center宽度是自适应的，当其宽度小于左侧padding时，布局会混乱。原因是left元素的margin-left: -100%;是相对于父元素的宽度(不包括padding值)，当center元素的宽度小于left元素的宽度时，左侧放不下left元素，所以会移动到下一行
+  </pre>
+  <div class="wrap">
+    <div class="center">center</div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+</body>
+</html>
