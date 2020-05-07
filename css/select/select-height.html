@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设置select下拉框高度</title>
+  <style>
+    select {
+      /* position: absolute;
+      z-index: 1; */
+    }
+  </style>
+</head>
+<body>
+<select
+  onmousedown="if(this.options.length > 6){this.size=7}"
+  onblur="this.size=0"
+  onchange="this.size=0"
+>
+    <option value="">请选择</option>
+    <option value="1">aaa</option>
+    <option value="2">bbb</option>
+    <option value="3">ccc</option>
+    <option value="4">ddd</option>
+    <option value="5">eee</option>
+    <option value="6">fff</option>
+    <option value="7">ggg</option>
+    <option value="8">hhh</option>
+  </select>
+</body>
+</html>
