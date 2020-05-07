@@ -1,0 +1,292 @@
+.arrow {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+.arrow:before, .arrow:after {
+  /* 在arrow的伪元素里设置共有属性 */
+  position: absolute;
+  content: '';
+  border-color: transparent;
+  border-style: solid;
+}
+.arrow-up:before {
+  top: 50%;
+  left: 35%;
+  width: 30%;
+  height: 50%;
+  /* border属性重要 */
+  border: none;
+  background-color: #409EFF;
+}
+.arrow-up:after {
+  top: -50%;
+  left: 0;
+  border-width: 20px;
+  border-bottom-color: #409EFF;
+}
+.arrow-right:before {
+  top:35%;
+  left: 0;
+  width: 50%;
+  height: 30%;
+  border: none;
+  background-color: #409EFF;
+}
+.arrow-right:after {
+  top: 0;
+  left: 50%;
+  border-width: 20px;
+  border-left-color: #409EFF;
+}
+.arrow-down:before {
+  top: 0;
+  left: 35%;
+  width: 30%;
+  height: 50%;
+  border: none;
+  background-color: #409EFF;
+}
+.arrow-down:after {
+  top: 50%;
+  left: 0;
+  border-width: 20px;
+  border-top-color: #409EFF;
+}
+.arrow-left:before {
+  top: 35%;
+  left: 50%;
+  width: 50%;
+  height: 30%;
+  border: none;
+  background-color: #409EFF;
+}
+.arrow-left:after {
+  top: 0;
+  left: -50%;
+  border-width: 20px;
+  border-right-color: #409EFF;
+}
+/* curve */
+.arrow .curve {
+  position: absolute;
+  overflow: hidden;
+}
+.arrow .curve:before {
+  content: '';
+  position: absolute;
+}
+.arrow-up.curve-right:before {
+  width: 0;
+  height: 0;
+}
+.arrow-up.curve-right .curve {
+  top: 50%;
+  left: 35%;
+  width: 65%;
+  height: 50%;
+}
+.arrow-up.curve-right .curve:before {
+  /* 此处不适合使用百分比，因为.curve的宽度不是40px */
+  top: -20px;
+  left: 0;
+  width: 27px;
+  height: 15px;
+  /* 12px就是曲线border的宽度 */
+  border: 12px solid #409EFF;
+  border-radius: 2000px;
+}
+.arrow-right.curve-down:before {
+  width: 0;
+  height: 0;
+}
+.arrow-right.curve-down .curve {
+  top: 35%;
+  left: 0;
+  width: 50%;
+  height: 65%;
+}
+.arrow-right.curve-down .curve:before {
+  top: 0;
+  left: 0;
+  width: 27px;
+  height: 20px;
+  border: 12px solid #409EFF;
+  border-radius: 2000px;
+}
+.arrow-down.curve-left:before {
+  width: 0;
+}
+.arrow-down.curve-left .curve {
+  top: 0;
+  left: 0;
+  width: 65%;
+  height: 50%;
+}
+.arrow-down.curve-left .curve:before {
+  top: 0;
+  left: -25px;
+  width: 27px;
+  height: 20px;
+  border: 12px solid #409EFF;
+  border-radius: 2000px;
+}
+.arrow-left.curve-up:before {
+  width: 0;
+}
+.arrow-left.curve-up .curve {
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 65%;
+}
+.arrow-left.curve-up .curve:before {
+  top: -26px;
+  left: -20px;
+  width: 16px;
+  height: 27px;
+  border: 12px solid #409EFF;
+  border-radius: 2000px;
+}
+
+/* 第三行 */
+.arrow-up.curve-left:before {
+  width: 0;
+}
+.arrow-up.curve-left .curve {
+  top: 50%;
+  left: 0;
+  width: 65%;
+  height: 50%;
+}
+.arrow-up.curve-left .curve:before {
+  top: -20px;
+  left: -26px;
+  width: 27px;
+  height: 16px;
+  border: 12px solid #409EFF;
+  border-radius: 2000px;
+}
+.arrow-right.curve-up:before {
+  width: 0;
+}
+.arrow-right.curve-up .curve {
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 65%;
+}
+.arrow-right.curve-up .curve:before {
+  top: -26px;
+  left: 0;
+  width: 16px;
+  height: 27px;
+  border: 12px solid #409EFF;
+  border-radius: 2000px;
+}
+.arrow-down.curve-right:before {
+  width: 0;
+}
+.arrow-down.curve-right .curve {
+  top: 0;
+  left: 30%;
+  width: 65%;
+  height: 50%;
+}
+.arrow-down.curve-right .curve:before {
+  top: 0;
+  left: 0;
+  width: 27px;
+  height: 16px;
+  border: 12px solid #409EFF;
+  border-radius: 2000px;
+}
+.arrow-left.curve-down:before {
+  width: 0;
+}
+.arrow-left.curve-down .curve {
+  top: 35%;
+  left: 50%;
+  width: 50%;
+  height: 65%;
+}
+.arrow-left.curve-down .curve:before {
+  top: 0;
+  left: -20px;
+  width: 16px;
+  height: 27px;
+  border: 12px solid #409EFF;
+  border-radius: 2000px;
+}
+
+/* animate */
+.arrow-animate {
+  width: 170px;
+  height: 170px;
+  animation: spin 2s infinite linear;
+}
+.arrow-animate .arrow-item {
+  position: absolute;
+  width: 170px;
+  height: 85px;
+}
+.arrow-animate .arrow-item:before {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+}
+.arrow-animate .arrow-item .curve {
+  width: 170px;
+  height: 71px;
+}
+.arrow-animate .arrow-item .curve:before {
+  left: 20px;
+  width: 100px;
+  height: 100px;
+  border: 17px solid #409EFF;
+  border-radius: 2000px;
+}
+.arrow-animate .arrow-item:first-child {
+  top: 0;
+  left: 0;
+}
+.arrow-animate .arrow-item:first-child:before {
+  bottom: -30px;
+  left: 5px;
+  border-top-color: #409EFF;
+}
+.arrow-animate .arrow-item:first-child .curve {
+  top: 0;
+  left: 0;
+}
+.arrow-animate .arrow-item:first-child .curve:before {
+  top: 20px;
+}
+.arrow-animate .arrow-item:last-child {
+  top: 85px;
+  left: 0;
+}
+.arrow-animate .arrow-item:last-child:before {
+  top: -34px;
+  right: 0;
+  border-bottom-color: #409EFF;
+}
+.arrow-animate .arrow-item:last-child .curve {
+  bottom: 0;
+  left: 0;
+}
+.arrow-animate .arrow-item:last-child .curve:before {
+  bottom: 20px;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
