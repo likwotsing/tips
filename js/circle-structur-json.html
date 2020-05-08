@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>循环引用</title>
+</head>
+<body>
+  <pre>
+    JSON数据里有循环引用时，剔除掉循环引用并返回可用的数据
+    1、使用JSON.stringify()的第2个参数，该参数是一个函数，可以在里面过滤掉不符合条件的属性
+    2、查看demo3, 如果有2个属性值是同一个对象时，会discard后一个属性
+  </pre>
+  <script>
+    // demo1
+    var circ = {}
+    circ.circ = circ
+
+    // demo2
+    var obj = {
+      a: 'foo',
+      b: obj
+    }
+    
+    // demo3, 会把twodiscard
+    var obj3 = {
+      b: 1
+    }
+    var obj31 = {
+      one: obj3,
+      two: obj3
+    }
+    var cache = []
+    var r = JSON.stringify(obj, (key, value) => {
+      if (typeof value === 'object' && value !== null) {
+        if (cache.includes(value)) {
+          // duplicate reference fond, discard key
+          return
+        }
+        // store value in our collection
+        cache.push(value)
+      }
+      return value
+    })
+    cache = null // enable garbage collection
+
+    console.log(r);
+
+    // mdn的做法
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cyclic_object_value#Examples
+    const getCircularReplacer = () => {
+      const seen = new WeakSet()
+      return (key, value) => {
+        if (typeof value === 'object' && value !== null) {
+          if (seen.has(value)) {
+            return
+          }
+          seen.add(value)
+        }
+        return value
+      }
+    }
+    var r1 = JSON.stringify(obj, getCircularReplacer())
+    console.log(r1);
+
+
+    // demo3
+    var r3 = JSON.stringify(obj31, getCircularReplacer(), '--')
+    console.log(r3);
+  </script>
+</body>
+</html>
