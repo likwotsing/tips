@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多列等高布局</title>
+  <style>
+    .box {
+      border: 1px solid #ccc;
+    }
+    .item {
+      display: table-cell;
+      width: 100px;
+      background-color: #409EFF;
+    }
+    .w20 {
+      width: 20px;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h2>使用table-cell实现多列等高布局</h2>
+  <pre>
+    1、以前的做法：等加载完之后，用js计算多个子元素的高度，用最高的高度设置其他子元素，会出现抖动
+    2、使用table-cell可以实现，因为在一个tr中，里面的td是等高的（td里的内容多少无关）
+    3、tr里面的元素不会自动换行
+    4、table-cell里的元素不识别margin
+  </pre>
+  <div class="box">
+    <div class="item">
+      <img src="https://via.placeholder.com/120x60" alt="">
+      <h4>这是标题</h4>
+      <p>这是描述</p>
+    </div>
+    <div class="item w20"></div>
+    <div class="item">
+      <img src="https://via.placeholder.com/120x60" alt="">
+      <h4>这是标题</h4>
+      <p>这是描述</p>
+    </div>
+    <div class="item w20"></div>
+    <div class="item">
+      <img src="https://via.placeholder.com/120x60" alt="">
+      <h4>这是标题</h4>
+      <p>这是描述，描述很多描述很多描述很多描述很多描述很多描述很多描述很多描述很多</p>
+    </div>
+  </div>
+</body>
+</html>

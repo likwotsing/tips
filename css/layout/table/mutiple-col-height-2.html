@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多列等高</title>
+  <style>
+    .box {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      column-gap: 20px;
+      border: 1px solid #ccc;
+    }
+    .item {
+      background-color: #409EFF;
+    }
+  </style>
+</head>
+<body>
+  <h2>多列等高</h2>
+  <pre>
+    1、使用grid布局实现多列等高布局
+  </pre>
+  <div class="box">
+    <div class="item">
+      <img src="https://via.placeholder.com/120x60" alt="">
+      <h4>这是标题</h4>
+      <p>这是描述</p>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/120x60" alt="">
+      <h4>这是标题</h4>
+      <p>这是描述</p>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/120x60" alt="">
+      <h4>这是标题</h4>
+      <p>这是描述，描述很多描述很多描述很多描述很多描述很多描述很多描述很多描述很多</p>
+    </div>
+  </div>
+</body>
+</html>

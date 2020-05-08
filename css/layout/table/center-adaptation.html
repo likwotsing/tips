@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中间自适应</title>
+  <style>
+    .box {
+      display: table;
+      width: 100%;
+    }
+    .item {
+      display: table-cell;
+    }
+    .left {
+      width: 100px;
+      background-color: #6AC5AC;
+    }
+    .center {
+      background-color: #D66666;
+    }
+    .right {
+      width: 200px;
+      background-color: #FCC777;
+    }
+  </style>
+</head>
+<body>
+  <h2>左右2侧固定，中间自适应</h2>
+  <pre>
+    1、包裹元素设置display: table;宽度被内容撑开，需设置width: 100%;
+    2、子元素设置display: table-ce;
+    3、哪列需要自适应，该列就不要设置width，其他列设置width即可
+  </pre>
+  <div class="box">
+    <div class="item left">left</div>
+    <div class="item center">center</div>
+    <div class="item right">right</div>
+  </div>
+</body>
+</html>

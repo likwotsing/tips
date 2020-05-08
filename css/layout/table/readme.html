@@ -23,6 +23,16 @@
     1、td默认继承tr的高度，且均分table的宽度
     2、如果td设置vertical-align: middle;td里面的元素（除float，absolute）所有的块级、非块级元素都会相对于td垂直居中
     3、如果td设置text-align: center; td元素里面所有非block元素（除float、absolute）都会相对于td水平居中，虽然block元素不居中，但里面的文字或inline元素会水平居中
+
+    display: table-cell元素具有以下特性：
+    1、text-align、vertical-align等可以使用，margin不起作用
+    2、会和设置了display: table-cell的相邻兄弟元素，一行等高显示
+    3、父元素设置了display: table，子元素设置display: table-cell，会均分父元素的宽度。若其中一个子元素设置了宽度，剩余的子元素会均分剩余的宽度
+    4、对设置了float、absolute的元素不起作用（解决办法：间接地，在这些元素外层添加一层元素，并设置display: inline-block）
+
+    display: inline-block
+    1、对相邻的元素表现出inline的特点，允许空格；对于内部元素来说表现出block元素的特点，可以设置宽高
+    2、空格是两个标签存在换行符/制表符/缩进的原因产生的，给设置了inline-block元素的父元素设置font-size: 0即可解决
   </pre>
 </body>
 </html>

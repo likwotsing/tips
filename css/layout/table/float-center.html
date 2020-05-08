@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浮动元素垂直居中</title>
+  <style>
+    .wrap {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      width: 400px;
+      height: 300px;
+      background-color: #409EFF;
+    }
+    .float-box {
+      width: 120px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      background-color: #6AC5AC;
+    }
+    .float-left {
+      float: left;
+    }
+    .float-right {
+      float: right;
+    }
+    .box {
+      display: inline-block;
+      clear: both;
+      width: 80%;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h2>浮动元素垂直居中</h2>
+  <pre>
+    1、display: table-cell; 对浮动元素是不起作用的
+    2、当我们需要两个元素一个左浮动一个右浮动，并且这2个元素都需要居中。给这2个浮动的元素外面加一个display: inline-block; 的元素，并且清除浮动。这样display: tabale-cell; 的垂直居中对inline-block的元素起作用。
+  </pre>
+  <div class="wrap">
+    <div class="box">
+      <div class="float-box float-left">float-left</div>
+      <div class="float-box float-right">
+        float-right
+      </div>
+    </div>
+  </div>
+</body>
+</html>
