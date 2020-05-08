@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星星评分</title>
+  <style>
+    ul {
+      list-style: none;
+      margin: 0;
+      padding-left: 0;
+    }
+    li {
+      float: left;
+      width: 27px;
+      height: 27px;
+      background: url(./star.gif);
+    }
+    li a {
+      display: block;
+      width: 100%;
+      padding-top: 27px;
+      overflow: hidden;
+    }
+    li.light {
+      background-position: 0 -29px;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class=""><a href="javascript:;"></a></li>
+    <li><a href="javascript:;"></a></li>
+    <li><a href="javascript:;"></a></li>
+    <li><a href="javascript:;"></a></li>
+    <li><a href="javascript:;"></a></li>
+  </ul>
+
+  <script>
+    var num = 0 // 点亮星星的个数
+    var finalnum = 0 // 最终点亮星星的个数
+    var tempnum = 0 //一个中间值
+    var lis = document.getElementsByTagName('li')
+    function fnShow(num) {
+      finalnum = num || tempnum // 如果传入的是0，则取tempnum的值
+      for (var i = 0; i < lis.length; i++) {
+        // 点亮星星就是为li添加light样式
+        lis[i].className = i < finalnum ? 'light' : ''
+      }
+    }
+
+    for (var i = 1; i <= lis.length; i++) {
+      lis[i - 1].index = i
+      lis[i - 1].onmouseover = function() {
+        fnShow(this.index)
+      }
+      lis[i - 1].onmouseout = function() {
+        // 传入0，finalnum为tempnum
+        fnShow(0)
+      }
+      lis[i - 1].onclick = function() {
+        // 鼠标点击，同时会调用mouseout
+        tempnum = this.index
+      }
+    }
+
+  </script>
+</body>
+</html>

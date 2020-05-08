@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>绝对定位元素居中</title>
+  <style>
+    .wrap {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      border: 1px solid #ccc;
+    }
+    .wrap1 .box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .wrap2 img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <h2>绝对定位元素，垂直居中</h2>
+  <pre>
+    1、使用transform可以不需设置元素宽高，但兼容性不好
+    2、使用margin-top,margin-left需要知道元素的宽高
+    3、使用margin: auto，需要设置该元素宽高，或该元素是一个inline-block（如img）元素
+  </pre>
+  <div class="wrap wrap1">
+    <div class="box">
+      内容
+      <img src="https://via.placeholder.com/200x100" alt="">
+    </div>
+  </div>
+  <div class="wrap wrap2">
+    <img src="https://via.placeholder.com/200x100" alt="">
+  </div>
+</body>
+</html>

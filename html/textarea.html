@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>textarea获取值</title>
+</head>
+<body>
+  <pre>
+    1、使用jquery
+      $('textarea').val(),可以获取textarea的最新值；
+      $('textarea').text()获取的是初始值
+    2、使用原始js
+      document.querySelector('textarea').value是最新值
+      document.querySelector('textarea').innerHTML是原始值
+  </pre>
+  <textarea name="info" id="info" cols="30" rows="10">
+    这是textarea的原始信息
+  </textarea>
+  <button id="btn">获取textarea文本</button>
+  <script src="../js/jquery-1.9.0.js"></script>
+  <script>
+    var r1 = $('#info').val()
+    console.log(r1);
+
+    var r2 = $('#info').text()
+    console.log(r2);
+
+    $('#btn').on('click', function() {
+      var r1 = $('#info').val()
+      console.log(r1);
+
+      var r2 = $('#info').text()
+      console.log(r2);
+
+      var r3 = document.getElementById('info').value
+      console.log(r3);
+    })
+  </script>
+</body>
+</html>
