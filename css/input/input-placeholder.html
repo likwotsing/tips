@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>input placeholder颜色修改</title>
+  <style>
+    input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { /* webkit */
+      color: red;
+    }
+    input:-moz-placeholder,
+    textarea:-moz-placeholder {
+      color: #409EFF; /* firefox 4 to 18 */
+    }
+    input::-moz-placeholder,
+    textarea::-moz-placeholder { /* firefox 19+ */
+      color: green;
+    }
+    /* IE9及以下版本的CSS选择器均不支持占位文本 */
+    input::-ms-input-placeholder,
+    textarea::-ms-input-placeholder { /* IE10+ */
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <pre>
+    有2种placeholder：input，textarea
+    如果不设置前缀, ::-webkit-input-placeholder,那input和textarea都生效
+    如果设置了前缀, input::-webkit-input-placeholder, 那只有input生效
+  </pre>
+  <input type="text" placeholder="请输入文字">
+  <textarea name="textarera" id="textarera" cols="30" rows="10" placeholder="这是textarea默认文本"></textarea>
+</body>
+</html>

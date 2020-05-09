@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css版本</title>
+  <link rel="stylesheet" href="./style.css?v=2.1">
+</head>
+<body>
+  <h2>引入的css或js文件后面添加参数的作用</h2>
+  <pre>
+    使用参数有2种情况：
+    1、脚本并不存在，而是服务端动态生成的，因此带了个版本号，以示区别
+    2、浏览器会缓存css，js文件，因此每次更新了css，js文件后，改变版本后，浏览器就会重新下载新的文件
+  </pre>
+  <script src="./main.js?v=1.0"></script>
+</body>
+</html>

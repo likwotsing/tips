@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>火狐浏览器不支持img的onerror</title>
+  <style>
+    .img {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <pre>
+    1、如果火狐浏览器不支持img onerror，
+    解决办法： 给图片的外层标签添加背景，背景用的就是缺省图片
+  </pre>
+  <img src="./images/apple2.png" alt="" class="img" onerror="whenError(this)">
+
+  <script>
+    function whenError(a) {
+      // 清空，防止onerror的图片也不存在，陷入死循环，一直调用该函数
+      a.onerror = null
+      a.src = './images/apple.png'
+      console.log('图片出错的时候调用默认图片');
+    }
+  </script>
+</body>
+</html>
