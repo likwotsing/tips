@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>文字超出长度用省略号显示</title>
+  <style type="text/css">
+    p {
+      width: 10em;
+      /*保证文字不会被半汉字截断,显示10个文字*/
+      overflow: hidden;
+      /*超出长度的文字隐藏*/
+      text-overflow: ellipsis;
+      /*文字隐藏以后添加省略号*/
+      white-space: nowrap;
+      /*强制不换行*/
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <p title="我是中国人，这是一个很骄傲的称呼">我是中国人，这是一个很骄傲的称呼</p>
+</body>

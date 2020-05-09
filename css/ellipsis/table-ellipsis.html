@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>文字超出长度用省略号显示</title>
+  <style type="text/css">
+    table {
+      table-layout: fixed;
+      /*只有定义表格的算法为fixed,th才有效果*/
+      border-collapse: collapse;
+      /*边框合并模式*/
+    }
+
+    table tr th {
+      overflow: hidden;
+      /*超出的文字隐藏*/
+      text-overflow: ellipsis;
+      /*文字超出后,显示省略号*/
+      width: 100%;
+      white-space: nowrap;
+      /*文字不换行*/
+      /* word-break: keep-all; */
+    }
+  </style>
+</head>
+
+<body>
+  <pre>
+    table
+    1、td默认均分table的宽度
+    2、如果某个td设置了宽度，那其他td均分剩余的宽度
+  </pre>
+  <table width="300" border="1">
+    <tr>
+      <th title="年度统计数据">年度统计数据</th>
+      <th title="季度统计数据">季度统计数据</th>
+      <th title="月份统计数据">月份统计数据</th>
+    </tr>
+    <tr>
+      <td>3000</td>
+      <td>2000</td>
+      <td>1000</td>
+    </tr>
+  </table>
+  <p></p>
+  <table width="300" border="1">
+    <tr>
+      <th style="width: 60px;" title="年度统计数据">年度统计数据</th>
+      <th title="季度统计数据">季度统计数据</th>
+      <th title="月份统计数据">月份统计数据</th>
+    </tr>
+    <tr>
+      <td>3000</td>
+      <td>2000</td>
+      <td>1000</td>
+    </tr>
+  </table>
+</body>
+
+</html>
