@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原生video标签隐藏下载按钮</title>
+  <style>
+    video {
+      width: 600px;
+      height: 300px;
+    }
+    /* video::-internal-media-controls-download-button {
+      display:none;
+    }
+    video::-webkit-media-controls-enclosure {
+      overflow:hidden;
+    }
+    video::-webkit-media-controls-panel {
+      width: calc(100% + 50px); 
+    } */
+  </style>
+</head>
+<body>
+  <h2>video隐藏下载按钮</h2>
+  <pre>
+    新版本chrome(81.0.4044.138)，默认不显示【下载】按钮了
+  </pre>
+  <!-- <video controls src="./test.mp4"></video> -->
+
+  <video controls>
+    <source src="./test.mp4" type="video/mp4">
+  </video>
+</body>
+</html>

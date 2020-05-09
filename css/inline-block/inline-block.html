@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>inline-block元素存在的问题</title>
+  <style>
+    .wrap {
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+    }
+    .item {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background-color: #409EFF;
+    }
+    .wrap1 {
+      font-size: 0;
+    }
+    .wrap2 {
+      /* 字符间距 */
+      /* letter-spacing: -5px;  */
+      /* 单词间距 */
+      word-spacing: -5px;
+    }
+    .wrap2 .item {
+      /* margin-right: -5px; */
+      margin-bottom: -5px;
+      /* vertical-align: top; */
+    }
+    .wrap3 .item {
+      vertical-align: top;
+    }
+    .wrap3 .item2 {
+      height: 150px;
+      background-color: #6AC5AC;
+    }
+  </style>
+</head>
+<body>
+  <pre>
+    display: inline-block元素的右侧、下侧有间隙
+    1、父元素设置font-size: 0, 子元素记得设置font-size，
+    2、父元素设置letter-spacing: -5px， 只能解决右侧的空白
+    3、父元素设置word-spacing: -5px, 只能解决右侧的空白
+    4、元素设置margin-right: -5px, 只能解决右侧的空白, 配合margin-bottom: -5px可解决下侧空白
+    5、元素设置vertical-align: top/middle/bottom, 都可解决下侧的空白
+
+    元素不等高时，设置vertical-align: top/middle/bottom, 使得元素顶部/居中/底部对齐。
+  </pre>
+  <div class="wrap wrap1">
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+  <div class="wrap wrap2">
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+  <div class="wrap wrap3">
+    <div class="item item1"></div>
+    <div class="item item2"></div>
+  </div>
+</body>
+</html>
