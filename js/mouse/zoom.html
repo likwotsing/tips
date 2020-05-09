@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鼠标滚轮事件</title>
+</head>
+<body>
+  <img id="myimage" src="./apple.png" alt="">
+
+  <script>
+    /**
+     * Firfox不支持鼠标滚轮事件，Mozilla实现了一个名为DOMMouseScroll的事件的处理，它会传递一个名为event且附带了名为detail属性的事件参数过来，这个detail属性不同于wheelDelta，它只能返回正值，即只能使鼠标滚轮向下滚动的值
+     * 
+    */
+    var myimage = document.getElementById('myimage')
+    if (myimage.addEventListener) {
+      // IE9, Chrome, Safari, Opera
+      myimage.addEventListener('mousewheel', MouseWeelHandler, false)
+
+      // Firefox
+      myimage.addEventListener('DOMMouseScroll', MouseWeelHandler, fasle)
+    } else {
+      // IE6/7/8
+      myimage.attachEvent('onmousewheel', MouseWeelHandler)
+    }
+
+    function MouseWeelHandler(e) {
+      var e = window.event || e // old IE support
+      // firefox的detail值取反后返回1或者-1
+      var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)))
+
+      // 设置图片大小范围，在50-800px之间
+      myimage.style.width = Math.max(50, Math.min(800, myimage.width + (30 * delta))) + 'px'
+      // 终止标准的鼠标滚轮事件处理，以防止上下滑动网页
+      return false
+    }
+
+  </script>
+</body>
+</html>
