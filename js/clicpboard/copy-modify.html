@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>修改剪切板内容</title>
+  <style>
+    div {
+      border: 1px solid #409EFF;
+    }
+    textarea {
+      width: 400px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <textarea class="source" name="" id="" cols="30" rows="10">
+    div {
+      margin: 0em;
+      padding: 2em;
+    }
+  </textarea>
+  <textarea name="" id="" cols="30" rows="10">
+
+  </textarea>
+
+  <script>
+    const source = document.querySelector('.source')
+
+    source.addEventListener('copy', event => {
+      const selection = document.getSelection()
+      console.log(selection);
+      let data = selection.toString()
+      let extraData = `————————————————
+版权声明：本文为CSDN博主「xxx」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。`
+      let newData = data + extraData
+
+      event.clipboardData.setData('text/plain', newData)
+      event.preventDefault()
+    })
+
+  </script>
+</body>
+</html>

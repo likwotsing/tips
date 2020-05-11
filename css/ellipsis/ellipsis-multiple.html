@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多行文字省略号</title>
+  <style>
+    .wrap {
+      width: 9em;
+      height: 66px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <pre>
+    多行文字省略号，需要设置height，当行文字省略号不需要
+  </pre>
+  <div class="wrap">
+    沈从文是我国著名的作家、文史专家，一生颇为传奇，虽然他仅受过小学教育，但通过自学成为一代大家，曾两度入围诺贝尔文学奖，其文风清透有力，代表作有《边城》《湘行散记》《中国古代服饰研究》等。
+  </div>
+</body>
+</html>

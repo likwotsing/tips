@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>禁止鼠标右键、全选、复制、粘贴等</title>
+  <style>
+    body {
+      height: 2000px;
+    }
+  </style>
+</head>
+<body>
+  <a href="https://www.baidu.com">百度链接</a>
+  <p>
+    This example presents a function, isVideoInFullscreen(), which lo
+  </p>
+  <script>
+    // 禁用右键菜单
+    document.oncontextmenu = function() {
+      // event.returnValue = false
+
+      // 或者直接返回整个事件
+      // return false
+    }
+
+    // onselectstart事件禁用网页上选取的内容
+    document.onselectstart = function() {
+      // event.returnValue = false
+
+      // 或者直接返回这个事件
+      // return false
+    }
+
+    // oncopy事件禁用复制
+    document.oncopy = function(e) {
+      debugger
+      event.returnValue = false
+
+      // 或者直接返回整个事件
+      // return false
+    }
+
+    // 禁用鼠标事件
+    document.onmousedown = function(e) {
+      if (e.which === 2) {
+        // 鼠标滚轮的按下，滚动不触发
+        return false
+      }
+      if (e.which === 3) {
+        // 鼠标右键
+        return false
+      }
+    }
+
+    // 禁用键盘中的ctrl、alt、shift
+    document.onkeydown = function() {
+      if (event.ctrlKey) {
+        return false
+      }
+      if (event.altKey) {
+        return false
+      }
+      if (event.shiftKey) {
+        return false
+      }
+    }
+  </script>
+</body>
+</html>

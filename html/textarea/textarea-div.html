@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>textarea高度自适应</title>
+  <style>
+    .textarea {
+      width: 400px;
+      min-height: 20px;
+      max-height: 300px;
+      padding: 3px;
+      outline: 0;
+      border: 1px solid #409EFF;
+      font-size: 12px;
+      line-height: 24px;
+      /* word-wrap: break-word; */
+      /* overflow-x: hidden; */
+      overflow-y: auto;
+    }
+    .textarea2 {
+      width: 400px;
+      padding: 3px;
+      font-size: 14px;
+      line-height: 24px;
+      overflow: hidden;
+      outline: 0;
+      border: 1px solid #409EFF;
+    }
+  </style>
+</head>
+<body>
+  <h2>div模拟textarea文本域实现高度自适应</h2>
+  <pre>
+    div通过contenteditable实现输入功能
+  </pre>
+  <div class="textarea" contenteditable="true"></div>
+
+  <h2>textarea根据输入内容自适应高度</h2>
+  <textarea class="textarea2" placeholder="textarea根据内容自适应"></textarea>
+
+  <script>
+    var text = document.querySelector('.textarea2')
+    autoTextarea(text)
+
+    function autoTextarea(elem, extra, maxHeight) {
+      extra = extra || 0
+      var isFirefox = !!document.getBoxObjectFor || 'mozInnerScreenX' in window
+      var isOpera = !!window.opera && !!window.opera.toString().indexOf('Opera')
+      var addEvent = function(type, callback) {
+        elem.addEventListener ? elem.addEventListener(type, callback, false) : elem.attachEvent('on' + type, callback)
+      }
+      var getStyle = elem.currentStyle ? function(name) {
+        var val = elem.currentStyle[name]
+        if (name === 'height' && val.search(/px/i) !== 1) {
+          var rect = elem.getBoundingClientRect()
+          return rect.bottom - rect.top - parseFloat(getStyle('paddingTop')) - parseFloat(getStyle('paddingBottom')) + 'px'
+        }
+        return val
+      } : function(name) {
+        return getComputedStyle(elem, null)[name]
+      }
+      var minHeight = parseFloat(getStyle('height'))
+      elem.style.resize = 'none'
+
+      var change = function() {
+        var scrollTop, height, padding = 0, style = elem.style
+        if (elem._length === elem.value.length) {
+          return
+        }
+        elem._length = elem.value.length
+        if (!isFirefox && !isOpera) {
+          padding = parseInt(getStyle('paddingTop')) + parseInt(getStyle('paddingBottom'))
+        }
+        scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+
+        elem.style.height = minHeight +'px'
+
+        if (elem.scrollHeight > minHeight) {
+          if (maxHeight && elem.scrollHeight > maxHeight) {
+            height = maxHeight - padding
+            style.overflowY = 'auto'
+          } else {
+            height = elem.scrollHeight - padding
+            style.overflowY = 'hidden'
+          }
+          style.height = height + extra + 'px'
+          scrollTop += parseInt(style.height) - elem.currentHeight
+          document.body.scrollTop = scrollTop
+          document.documentElement.scrollTop = scrollTop
+          elem.currentHeight = parseInt(style.height)
+        }
+      }
+      addEvent('propertychange', change)
+      addEvent('input', change)
+      addEvent('focus', change)
+      change()
+    }
+  </script>
+</body>
+</html>
