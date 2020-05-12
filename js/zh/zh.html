@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js判断是否为中文</title>
+</head>
+<body>
+  <pre>
+    escape对字符串进行编码时，字符值大于255的以 %u**** 格式存储，而字符值大于255的恰好是非英文字符（一般是中文字符）
+    unescape
+  </pre>
+  <script>
+
+    var str = 'aaa中文aaa'
+
+    var r = isChn(str)
+    console.log(r);
+    function isChn(temp) {
+      var reg = /^[/u4e00-u9fa5]+$/
+      if (!reg.test(temp)) {
+        console.log('不全是中文')
+        return false
+      } else{
+        console.log('全是中文')
+        return true
+      }
+    }
+
+  </script>
+</body>
+</html>

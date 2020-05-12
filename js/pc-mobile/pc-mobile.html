@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pc端还是手机端</title>
+</head>
+
+<body>
+  <pre>
+    1、如果当前页面是pc端，而判断后跳转到当前页面，就会无限循环
+    2、所以，pc端就判断是不是移动端，不是就跳转到移动端，是就不处理
+  </pre>
+
+  <script>
+    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+      console.log('mobile')
+      // alert('手机端')
+      // 是移动端，做跳转等处理
+    } else {
+      console.log('pc')
+      // alert('PC端')
+      // 是pc端，不作处理
+    }
+  </script>
+</body>
+
+</html>

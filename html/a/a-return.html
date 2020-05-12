@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阻止a标签默认操作</title>
+</head>
+<body>
+  <pre>
+    1、阻止默认事件，不建议使用return false，因为在mouseover等几种特殊事件情况下，return false并不一定能阻止事件
+    2、也不建议使用javascript:void(0) 或 javascript:;
+    3、阻止event默认行为的常规做法：
+    if (event.preventDefault) {
+      event.preventDefault() // 支持DOM标准的浏览器
+    } else {
+      event.returnValue = false // IE
+    }
+  </pre>
+  <a href="http://www.baidu.com" onclick="return func()">aaa</a>
+  <a href="javascript:;" onclick="check()">bbb</a>
+  <a href="javascript:0;" onclick="check()">ccc</a>
+  <a href="http://www.baidu.com" onclick="preventDefaultEvent()">ddd</a>
+  <script>
+    function func() {
+      console.log('aaa');
+    }
+    function check() {
+      console.log('bbb');
+    }
+    function preventDefaultEvent() {
+      console.log('ddd');
+      debugger
+      if (event.preventDefault) {
+        event.preventDefault() // 支持DOM标准的浏览器
+      } else {
+        event.returnValue = false // IE
+      }
+    }
+  </script>
+</body>
+</html>

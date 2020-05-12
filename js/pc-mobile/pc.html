@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pc信息</title>
+</head>
+
+<body>
+  <pre>
+    1、http://ip.ws.126.net/ipquery
+    2、http://pv.sohu.com/cityjson
+    3、http://whois.pconline.com.cn/?ip=103.254.68.232
+    pconline的只能在线使用，不能在.html文件里使用
+  </pre>
+
+  <!-- 搜狐 -->
+  <script src="http://pv.sohu.com/cityjson"></script>
+  <script>
+    console.log(returnCitySN.cip)
+  </script>
+
+  <!-- 126 -->
+  <script src="http://ip.ws.126.net/ipquery"></script>
+  <script>
+    console.log(localAddress);
+  </script>
+
+</body>
+
+</html>

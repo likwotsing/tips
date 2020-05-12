@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON.parse</title>
+</head>
+<body>
+  <pre>
+    json中需要转义的字符：/ \ b f n r t
+  </pre>
+  <script>
+    var str = '{"name": "andy", "intro": "小学毕业\n高级中学\r工作积极\n\r上进"}'
+    str = str.replace(/\n/g, '\\\\n').replace(/\r/g, '\\\\r')
+    // \\转换成\, \\n转成\n，这样\\n就可以用parse转成对象时变为\n
+
+    var r = JSON.parse(str)
+    console.log(r);
+  </script>
+</body>
+</html>
