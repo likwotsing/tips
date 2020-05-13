@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中文排序</title>
+</head>
+
+<body>
+  <pre>
+    > 和 < 比较时，只是比较字符串的unicode编码，并不考虑当地的排序规则。
+
+    source.localeCompare(target)：target以本地特定的顺序与source进行比较
+    1、如果source小于target，则返回小于0的数
+    2、如果source大于target，返回大于0的数
+    3、如果两个字符串相等，或根据本地排序规则没有区别，则返回0
+  </pre>
+
+  <script>
+    var arr = ['鼠', '牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪']
+
+    var r = arr.sort(function compareFunction(item1, item2) {
+      return item1.localeCompare(item2)
+    })
+
+    console.log(r);
+
+    // 字母、数字的混合排序
+    var arr2 = [1, 2, 3, 'a', 'k', 'b', 'd', 10, 20, 'c']
+    arr2.sort((a, b) => {
+      // 如果可转换为有限数字，那么返回true，否则返会false
+      var c = isFinite(a)
+      var d = isFinite(b)
+      // 如果c和d不相等，就是比较的值不是同一类型
+      // 如果c和d相等，那就是同一类型的值比较，可能都是字母，也可能都是数字
+      var r = (c != d && c - d) || (typeof a === 'string' ? ('' + a).localeCompare('' +　b) : a > b)
+      return r
+    })
+    console.log(arr2)
+  </script>
+</body>
+
+</html>

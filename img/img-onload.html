@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片加载完再执行事件</title>
+</head>
+<body>
+  
+  <script>
+    var imgSrc = [
+      'https://wallpaper.infinitynewtab.com/InfinityWallpaper/5_10.jpg',
+      'https://wallpaper.infinitynewtab.com/InfinityWallpaper/5_11.jpg',
+      'https://wallpaper.infinitynewtab.com/InfinityWallpaper/5_12.jpg',
+      'https://wallpaper.infinitynewtab.com/InfinityWallpaper/5_13.jpg',
+      'https://wallpaper.infinitynewtab.com/InfinityWallpaper/5_14.jpg'
+    ]
+
+    var r = load(imgSrc, cb)
+    console.log(r);
+    function cb() {
+      console.log('全部图片已加载完')
+    }
+    /**
+      imgSrc: 页面中要预加载的图片的路径数组
+      callback: 加载完图片后要执行的函数
+    */
+    function load(imgSrc, callback) {
+      var imgs = []
+      var c = 0
+      for (var i = 0; i < imgSrc.length; i++) {
+        imgs[i] = new Image()
+        imgs[i].src = imgSrc[i]
+        imgs[i].onload = function() {
+          c++
+          if (c === imgSrc.length) {
+            if (callback) {
+              callback()
+            }
+          }
+        }
+      }
+      // 返回加载的图片列表，看需求是否需要
+      return imgs
+    }
+  </script>
+</body>
+</html>

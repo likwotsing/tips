@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>回到顶部</title>
+  <style>
+    body {
+      /* height: 2000px; */
+    }
+    #btn {
+      position: fixed;
+      right: 25px;
+      bottom: 10px;
+      width: 40px;
+      height: 40px;
+      display: none;
+      background: url(./gotop.png) no-repeat left top;
+      transition: background-position 0.3s;
+    }
+
+    #btn:hover {
+      background-position: 0 -39px;
+    }
+  </style>
+</head>
+<body>
+  <pre>
+    a标签的href="javascript:;"是阻止a标签的默认行为
+    href=" ", 也会默认跳转到页面顶部，但是用户体验较差，没有缓动的效果
+  </pre>
+  
+  <a href="javascript:;" id="btn" title="回到顶部"></a>
+
+  <script>
+    renderP(20)
+    function renderP(count) {
+      for(var i = 0; i < count; i++) {
+        var p = document.createElement('p')
+        p.innerHTML = i
+        document.body.appendChild(p)
+      }
+    }
+
+    window.onload = function() {
+      var obtn = document.getElementById('btn')
+      // 可视区域的高度
+      var clientHeight = document.documentElement.clientHeight
+      var timer = null
+      var isTop = true // 是否达到顶部
+
+      window.onscroll = function() {
+        // 滚动高度
+        var osTop = document.documentElement.scrollTop || document.body.scrollTop
+
+        // if (osTop >= clientHeight) {
+        if (osTop >= 50) {
+          obtn.style.display = 'block'
+        } else {
+          obtn.style.display = 'none'
+        }
+
+        // 点击回到顶部按钮后，滚动条在回滚过程中，若手动滚动滚动条，则清除定时器
+        if (!isTop) {
+          console.log(1111);
+          clearInterval(timer)
+          timer = null
+        }
+        isTop = false
+      }
+
+      obtn.onclick = function() {
+        timer = setInterval(function() {
+          var osTop = document.documentElement.scrollTop || document.body.scrollTop
+          // 设置速度差，差生缓动效果
+          var speed = Math.floor(-osTop / 6)
+          document.documentElement.scrollTop = document.body.scrollTop = osTop + speed
+          isTop = true
+          if (osTop === 0) {
+            console.log('cleartimer');
+            clearInterval(timer)
+          }
+        }, 30)
+      }
+
+
+    }
+  </script>
+</body>
+</html>

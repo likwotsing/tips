@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定时器清除以后再调用</title>
+</head>
+<body>
+  <pre>
+    《JavaScript高级程序设计》中列举了setInterval()的缺点：
+    1、某些间隔会被跳过
+    2、多个定时器的代码执行之间的间隔可能会比预期的小
+    替代方案：链式调用setTimeout
+  </pre>
+
+  <script>
+    // 链式调用setTimeout
+    // let delay = 1000
+    // setTimeout(function() {
+    //   // some code
+    //   console.log(111);
+    //   setTimeout(arguments.callee, delay)
+    // }, delay)
+
+
+    // 先以0.2s一次的频率打印1-10，再以0.5s的频率打印11-20
+    function count(min, max, delay, fn) {
+      return function() {
+        setTimeout(function() {
+          if (min <= max) {
+            console.log(min++)
+            setTimeout(arguments.callee, delay)
+          } else if (fn instanceof Function) {
+            fn()
+            fn = null
+          }
+        }, delay)
+      }
+    }
+
+    var count2 = count(11, 20, 500)
+    var count1 = count(1, 10, 200, count2)
+    count1()
+
+  </script>
+</body>
+</html>
