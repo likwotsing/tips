@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>百度搜索模仿</title>
+  <style>
+    .fm {
+      clear: none;
+      float: left;
+      margin: 11px 0 0 10px;
+      position: relative;
+      z-index: 297;
+      padding: 0;
+      list-style: none;
+    }
+
+    .bdsug {
+      position: absolute;
+      top: 33px;
+      z-index: 1;
+      width: 538px;
+      background: #fff;
+      border: 1px solid #ccc;
+      -webkit-box-shadow: 1px 1px 3px #ededed;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .bdsug li {
+      width: 522px;
+      color: #000;
+      font: 14px arial;
+      line-height: 22px;
+      padding: 0 8px;
+      position: relative;
+      cursor: default;
+      list-style: none;
+      margin: 0;
+    }
+
+    .bdsug .bdsug-feedback-wrap {
+      text-align: right;
+      background: #fafafa;
+      color: #666;
+      height: 25px;
+      line-height: 27px;
+    }
+
+    .bdsug .bdsug-feedback {
+      margin-right: 10px;
+      text-decoration: underline;
+      color: #666;
+      font-size: 12px;
+    }
+
+    .bdsug-li-bg {
+      background: #f0f0f0;
+    }
+
+    .s_ipt_wr {
+      height: 32px;
+      display: inline-block;
+      vertical-align: top;
+      width: 539px;
+      margin-right: 0;
+      border-right-width: 0;
+      border-color: #b8b8b8 transparent #ccc #b8b8b8;
+      overflow: hidden;
+      border: 1px solid #b6b6b6;
+    }
+
+    .s_ipt_wr.iptfocus {
+      /* border-color: #4791ff transparent #4791ff #4791ff; */
+      border-color: #4791ff #4791ff #4791ff #4791ff;
+    }
+
+    #kw {
+      position: relative;
+      width: 494px;
+      height: 22px;
+      font: 16px/18px arial;
+      line-height: 22px;
+      margin: 6px 0 0 7px;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      -webkit-appearance: none;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="form" class="fm">
+    <div class="bdsug" style="height: auto;display: none;">
+      <ul>
+        <li data-index="0" data-key="美好的近义词" class="bdsug-overflow">美好<b>的近义词</b><i
+            class="c-icon c-icon-bear-round"></i></li>
+        <li data-index="1" data-key="美好生活" class="bdsug-overflow">美好<b>生活</b></li>
+        <li data-index="2" data-key="美好的反义词" class="bdsug-overflow">美好<b>的反义词</b></li>
+        <li data-index="3" data-key="美好生活劳动创造作文" class="bdsug-overflow">美好<b>生活劳动创造作文</b></li>
+      </ul>
+      <div class="bdsug-feedback-wrap"><span class="bdsug-feedback">反馈</span></div>
+    </div>
+    <span class="s_ipt_wr" id="s_ipt_wr">
+      <input id="kw" type="text" value="美好" autocomplete="off">
+    </span>
+  </form>
+
+  <script src="./jquery-1.9.0.js"></script>
+  <script>
+    $('#kw').on('click', function () {
+      var status = $('.bdsug').css('display')
+      if (status === 'block') {
+        $('.bdsug').css('display', 'none')
+      } else {
+        $('.bdsug').css('display', 'block')
+      }
+    })
+    $('#kw').blur(function () {
+      $('.bdsug').css('display', 'none')
+      $('.s_ipt_wr').removeClass('iptfocus')
+      // 失去焦点时，复位
+      currentIndex = -1
+    })
+    $('#kw').focus(function () {
+      $('.s_ipt_wr').addClass('iptfocus')
+    })
+
+    var currentIndex = -1
+    var len = $('.bdsug-overflow').length
+    var defaultValue = $('#kw').val()
+
+    $('.bdsug .bdsug-overflow').mouseover(function () {
+      $('.bdsug .bdsug-overflow').removeClass('bdsug-li-bg')
+      $(this).addClass('bdsug-li-bg')
+      currentIndex = $(this).data('index')
+    })
+
+    // $(document).keydown(function (event) {
+    $('#form').keydown(function (event) {
+      if ($('.bdsug').css('display') === 'block') {
+        // 38: up, 40: down
+        if (event.keyCode === 38) {
+          if (currentIndex === -1) { // 第一次按上键
+            currentIndex = len
+          }
+          $('.bdsug-overflow').removeClass('bdsug-li-bg')
+          $($('.bdsug-overflow')[--currentIndex]).addClass('bdsug-li-bg')
+        } else if (event.keyCode === 40) {
+          if (currentIndex >= len) {
+            currentIndex = -1
+          }
+          $('.bdsug-overflow').removeClass('bdsug-li-bg')
+          $($('.bdsug-overflow')[++currentIndex]).addClass('bdsug-li-bg')
+        } else if (event.keyCode === 13) { // enter
+          $('.bdsug').css('display', 'none')
+        }
+        var value = $('.bdsug-li-bg').data('key')
+        if (!value) {
+          value = defaultValue
+        }
+        $('#kw').val(value)
+        stopDefault(event)
+      }
+    })
+
+
+    function stopDefault(event) {
+      if (event && event.preventDefault) {
+        event.preventDefault()
+      } else {
+        event.returnValue = false
+      }
+    }
+  </script>
+</body>
+
+</html>
